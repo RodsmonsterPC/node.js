@@ -1,0 +1,32 @@
+{
+  "koders": [
+    {
+      "id": 1,
+      "name": "Alfred",
+      "lastname": "Pizana",
+      "age": "29",
+      "favoriteFood": "Pizza"
+    },
+    {
+      "id": 5,
+      "name": "Pedro",
+      "lastname": "Mendez",
+      "age": "30",
+      "favoriteFood": "Migas"
+    },
+    {
+      "id": 3,
+      "name": "Manu",
+      "lastname": "Dominguez",
+      "age": "29",
+      "favoriteFood": "Pizza"
+    },
+    {
+      "id": 4,
+      "name": "Rafael",
+      "lastname": "Villaseñor",
+      "age": "27",
+      "favoriteFood": "Hamburguesa"
+    }
+  ]
+}
