@@ -38,24 +38,24 @@
  *
  */
 
-const algoAsincrono = () =>
-  new Promise((resolve, reject) => {
-    setTimeout(() => {
-      let error = null;
-      if (error) {
-        reject(error);
-      }
-      resolve("Todo Cool");
-    }, 3000);
-  });
-//Aqui vendria un objeto de tipo promesa
-algoAsincrono()
-  .then((result) => {
-    console.log("Resultados: ", result);
-  })
-  .catch((error) => {
-    console.log("Error", error);
-  });
+// const algoAsincrono = () =>
+//   new Promise((resolve, reject) => {
+//     setTimeout(() => {
+//       let error = null;
+//       if (error) {
+//         reject(error);
+//       }
+//       resolve("Todo Cool");
+//     }, 3000);
+//   });
+// //Aqui vendria un objeto de tipo promesa
+// algoAsincrono()
+//   .then((result) => {
+//     console.log("Resultados: ", result);
+//   })
+//   .catch((error) => {
+//     console.log("Error", error);
+//   });
 
 const person = {
   name: "Antonio",
@@ -300,8 +300,114 @@ const koderIntroductoryCourse = (koderCourse) => {
 // File system
 const fs = require("fs");
 
-const getKoders = async (filekoder) => {
-  const contents = await fs.promises.readFile(filekoder, { encoding: "utf8" });
+// Obtener Koder
+// const getKoders = async (filekoder) => {
+//   const contents = await fs.promises.readFile(filekoder, { encoding: "utf8" });
 
-  console.log(contents);
-};
+//   console.log(JSON.parse(contents));
+// };
+
+// getKoders("./koders.json");
+
+// Crear koder
+
+// const createKoder = async (newKoder) => {
+//   const data = await fs.promises.readFile("./koders.json", {
+//     encoding: "utf8",
+//   });
+
+//   let dataJSON = JSON.parse(data);
+//   dataJSON.koders.push(newKoder);
+
+//   dataString = JSON.stringify(dataJSON, null, 2);
+
+//   const newData1 = await fs.promises.writeFile("./koders.json", dataString);
+
+//   console.log(dataJSON);
+// };
+
+// let newKoder = {
+//   id: 7,
+//   name: "Kenia",
+//   lastname: "Cerecedo",
+//   age: "26",
+//   favoriteFood: "Gorditas",
+// };
+
+// createKoder(newKoder);
+
+//Filtrar por id y eliminar
+
+// const deleteKoder = async (koderId) => {
+//   const data = await fs.promises.readFile("./koders.json", {
+//     encoding: "utf8",
+//   });
+
+//   let dataJSON = JSON.parse(data);
+//   let koders = dataJSON.koders;
+
+//   dataJSON.koders = koders.filter((koder) => koder.id !== koderId);
+
+//   const newData2 = await fs.promises.writeFile(
+//     "./koders.json",
+//     JSON.stringify(dataJSON, null, 2)
+//   );
+//   console.log(dataJSON);
+// };
+
+// deleteKoder(5);
+
+//Koder mayor de 25 años
+
+// const KoderMayor = async () => {
+//   const data = await fs.promises.readFile("./koders.json", {
+//     encoding: "utf8",
+//   });
+
+//   let dataJSON = JSON.parse(data);
+
+//   let koders = dataJSON.koders;
+
+//   let kodersAge = koders.map((koder) => {
+//     const koderAge = parseInt(koder.age);
+//     koder.age = koderAge;
+//     return koder;
+//   });
+
+//   const koderOrder = kodersAge.filter((koder) => koder.age > 25);
+
+//   console.log(koderOrder);
+// };
+// KoderMayor();
+
+// Edita koder por Id
+
+// const editKoder = async (
+//   koderId,
+//   koderNewName,
+//   koderNewLast,
+//   koderNewAge,
+//   koderNewFood
+// ) => {
+//   const data = await fs.promises.readFile("./koders.json", {
+//     encoding: "utf8",
+//   });
+
+//   let dataJSON = JSON.parse(data);
+//   let koders = dataJSON.koders;
+
+//   const koderSearched = koders.find((koder) => koderId === koder.id);
+
+//   koderSearched.name = koderNewName;
+//   koderSearched.lastname = koderNewLast;
+//   koderSearched.age = koderNewAge;
+//   koderSearched.favoriteFood = koderNewFood;
+
+//   dataStringify = JSON.stringify(dataJSON, null, 2);
+
+//   const newData3 = await fs.promises.writeFile("./koders.json", dataStringify);
+
+//   console.log(dataJSON);
+// };
+
+// editKoder(4, "Raul", "Garcia", "30", "Migas");

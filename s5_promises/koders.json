@@ -8,13 +8,6 @@
       "favoriteFood": "Pizza"
     },
     {
-      "id": 5,
-      "name": "Pedro",
-      "lastname": "Mendez",
-      "age": "30",
-      "favoriteFood": "Migas"
-    },
-    {
       "id": 3,
       "name": "Manu",
       "lastname": "Dominguez",
@@ -23,10 +16,24 @@
     },
     {
       "id": 4,
-      "name": "Rafael",
-      "lastname": "Villaseñor",
-      "age": "27",
-      "favoriteFood": "Hamburguesa"
+      "name": "Raul",
+      "lastname": "Garcia",
+      "age": "30",
+      "favoriteFood": "Migas"
+    },
+    {
+      "id": 6,
+      "name": "Mario",
+      "lastname": "Sanchez",
+      "age": "25",
+      "favoriteFood": "Flautas"
+    },
+    {
+      "id": 7,
+      "name": "Kenia",
+      "lastname": "Cerecedo",
+      "age": "26",
+      "favoriteFood": "Gorditas"
     }
   ]
 }
