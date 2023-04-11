@@ -125,7 +125,7 @@ const fs = require("fs");
 //   KoderSearched.age = koderNewAge;
 //   KoderSearched.favoriteFood = koderNewFood;
 
-//   console.log(dataJSON);
+//
 //   dataStringify = JSON.stringify(dataJSON, null, 2);
 
 //   fs.writeFile("./koders.json", dataStringify, (err) => {
