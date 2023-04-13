@@ -61,8 +61,6 @@ server.post("/koders", async (request, response) => {
   const koders = json.koders;
   const newKoder = request.body;
 
-  console.log(newKoder);
-
   koders.push(newKoder);
 
   json.koders = koders;
@@ -76,17 +74,52 @@ server.post("/koders", async (request, response) => {
   response.json({ succes: true, message: "Se creo Koder exitosamente" });
 });
 
-server.patch("/koders/:idKoder", (request, response) => {
+server.patch("/koders/:idKoder", async (request, response) => {
   //request.params.id
   //request.params.idkoder
   const id = request.params.idKoder;
 
-  console.log("El koder ID es:", id);
-  response.json({ message: "Aqui se actualizaran koders" });
+  const koderId = parseInt(id);
+
+  const dataKoders = await fs.promises.readFile("./kodemia.json");
+  const json = JSON.parse(dataKoders);
+  const koders = json.koders;
+
+  const koderSearch = koders.find((koder) => koderId === koder.id);
+  const koderIndex = koders.indexOf(koderSearch);
+
+  const koderUpdated = Object.assign(koderSearch, request.body);
+
+  koders[koderIndex] = koderUpdated;
+
+  const dataStringify = JSON.stringify(json, null, 2);
+
+  fs.promises.writeFile("./kodemia.json", dataStringify, "utf8");
+
+  response.json({
+    sucess: true,
+    message: "Se actualizo el koder correctamente",
+  });
 });
 
-server.delete("/koders", (request, response) => {
-  response.json({ message: "Aqui se borran koders" });
+server.delete("/koders/:idKoder", async (request, response) => {
+  const id = request.params.idKoder;
+  const koderId = parseInt(id);
+
+  const dataKoders = await fs.promises.readFile("./kodemia.json");
+  const json = JSON.parse(dataKoders);
+  const koders = json.koders;
+
+  json.koders = koders.filter((koder) => koderId !== koder.id);
+
+  const dataStringify = JSON.stringify(json, null, 2);
+
+  fs.promises.writeFile("./kodemia.json", dataStringify);
+
+  response.json({
+    succes: true,
+    message: "Se eliminado el koder correctamente",
+  });
 });
 
 server.post("/", (request, response) => {
