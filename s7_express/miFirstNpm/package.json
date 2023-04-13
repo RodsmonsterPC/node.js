@@ -1,0 +1,31 @@
+{
+  "name": "mi-fisrt-package",
+  "version": "1.0.0",
+  "description": "Este proyecto es mi primer proyecto utilizando package.json",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "Start": "node index.js",
+    "dev": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RodsmonsterPC/node.js.git"
+  },
+  "keywords": [
+    "npm",
+    "kodemia",
+    "koders"
+  ],
+  "author": "Rodolfo Perez Cerecedo",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/RodsmonsterPC/node.js/issues"
+  },
+  "homepage": "https://github.com/RodsmonsterPC/node.js#readme",
+  "dependencies": {
+    "colors": "^1.4.0",
+    "moment": "^2.29.4"
+  }
+}
