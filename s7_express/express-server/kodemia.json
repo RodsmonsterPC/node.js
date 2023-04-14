@@ -14,14 +14,6 @@
       "age": "36",
       "generation": "24",
       "location": "cdmx"
-    },
-    {
-      "id": 3,
-      "name": "Leonardo",
-      "lastName": "Castro",
-      "age": "24",
-      "generation": "24",
-      "location": "tijuana"
     }
   ]
 }

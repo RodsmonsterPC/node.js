@@ -114,7 +114,7 @@ server.delete("/koders/:idKoder", async (request, response) => {
 
   const dataStringify = JSON.stringify(json, null, 2);
 
-  fs.promises.writeFile("./kodemia.json", dataStringify);
+  fs.promises.writeFile("./kodemia.json", dataStringify, "utf8");
 
   response.json({
     succes: true,
