@@ -10,7 +10,7 @@ router.get("/", async (request, response) => {
 
   const mentors = json.mentors;
 
-  const { age, generations, name, location } = request.query;
+  const { age, generations, name, module } = request.query;
 
   let filteredMentors = mentors;
 
@@ -20,26 +20,24 @@ router.get("/", async (request, response) => {
     );
   }
   if (generations) {
-    filteredMentors = mentors.filter((mentor) =>
+    filteredMentors = filteredMentors.filter((mentor) =>
       mentor.generations.includes(generations)
     );
   }
 
   if (name) {
-    filteredMentors = mentors.filter((mentor) => {
-      mentor.name === name;
-    });
+    filteredMentors = filteredMentors.filter((mentor) => mentor.name === name);
   }
 
-  if (location) {
-    filteredMentors = mentors.filter((mentor) => {
-      mentor.location === location;
-    });
+  if (module) {
+    filteredMentors = filteredMentors.filter(
+      (mentor) => mentor.module === module
+    );
   }
   response.json({
     success: true,
     data: {
-      koders: filteredMentors,
+      Mentors: filteredMentors,
     },
   });
 });
