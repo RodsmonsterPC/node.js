@@ -10,7 +10,7 @@ router.get("/", async (request, response) => {
 
   const mentors = json.mentors;
 
-  const { age, generations } = request.query;
+  const { age, generations, name, location } = request.query;
 
   let filteredMentors = mentors;
 
@@ -25,6 +25,17 @@ router.get("/", async (request, response) => {
     );
   }
 
+  if (name) {
+    filteredMentors = mentors.filter((mentor) => {
+      mentor.name === name;
+    });
+  }
+
+  if (location) {
+    filteredMentors = mentors.filter((mentor) => {
+      mentor.location === location;
+    });
+  }
   response.json({
     success: true,
     data: {

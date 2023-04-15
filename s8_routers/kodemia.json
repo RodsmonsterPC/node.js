@@ -57,24 +57,21 @@
       "name": "Alfred",
       "module": "backed",
       "age": 29,
-      "generations": [
-        "20",
-        "24"
-      ]
+      "generations": ["20", "24"]
     },
     {
       "id": 2,
       "name": "Isra",
       "module": "Javascript",
       "age": 30,
-      "generations": 24
+      "generations": ["20", "24"]
     },
     {
       "id": 3,
       "name": "Ferdinad",
       "module": "Javascript",
       "age": 29,
-      "generations": 20
+      "generations": ["20", "24"]
     }
   ]
 }
