@@ -4,58 +4,83 @@ import { Koder } from "../models/koders.module.js";
 const router = express.Router();
 
 router.get("/", async (request, response) => {
-  const allKoders = await Koder.find({});
+  try {
+    const allKoders = await Koder.find({});
 
-  response.json({
-    sucess: true,
-    data: {
-      koders: allKoders,
-    },
-  });
+    response.status(200).json({
+      sucess: true,
+      data: {
+        koders: allKoders,
+      },
+    });
+  } catch (error) {
+    response.status(error.status || 400).json({
+      sucess: false,
+      message: error.message,
+    });
+  }
 });
 router.post("/", async (request, response) => {
   let newKoder = request.body;
 
-  const koderCreated = await Koder.create(newKoder);
-  response.json({
-    sucess: true,
-    data: {
-      message: "Se ah creado el Koder",
-    },
-  });
-  console.log(koderCreated);
+  try {
+    const koderCreated = await Koder.create(newKoder);
+    response.status(201).json({
+      sucess: true,
+      data: {
+        koderCreated: koderCreated,
+      },
+    });
+    console.log(koderCreated);
+  } catch (error) {
+    response.status(error.status || 400).json({
+      succes: false,
+      message: error.message,
+    });
+  }
 });
 
 router.patch("/:idKoder", async (request, response) => {
-  let infoToUpdated = request.body;
+  try {
+    let infoToUpdated = request.body;
 
-  const koderId = request.params.idKoder;
-
-  const updated = await Koder.findByIdAndUpdate(koderId, infoToUpdated, {
-    new: true,
-  });
-
-  response.json({
-    sucess: true,
-    data: {
-      message: "Se ah actualizado el Koder",
-    },
-  });
-  console.log(updated);
+    const koderId = request.params.idKoder;
+    const updated = await Koder.findByIdAndUpdate(koderId, infoToUpdated, {
+      new: true,
+    });
+    response.json({
+      sucess: true,
+      data: {
+        koderUpdated: updated,
+      },
+    });
+    console.log(updated);
+  } catch (error) {
+    response.status(error.status || 400).json({
+      succes: false,
+      message: error.message,
+    });
+  }
 });
 
 router.delete("/:idKoder", async (request, response) => {
-  const koderId = request.params.idKoder;
+  try {
+    const koderId = request.params.idKoder;
+    const deleteKoder = await Koder.findByIdAndDelete(koderId);
 
-  const deleteKoder = await Koder.findByIdAndDelete(koderId);
-
-  response.json({
-    sucess: true,
-    data: {
-      message: "Se ah eliminado el Koder",
-    },
-  });
-  console.log(deleteKoder);
+    response.json({
+      sucess: true,
+      data: {
+        koderdeleted: deleteKoder,
+      },
+    });
+    console.log(deleteKoder);
+  } catch (error) {
+    response.status(error.status || 400).json({
+      succes: false,
+      message: error.message,
+    });
+  }
 });
 
 export default router;
