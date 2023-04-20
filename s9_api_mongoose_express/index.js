@@ -18,6 +18,20 @@ const server = express();
 
 server.use(express.json()); //Convierte(Parsea) el request a JSON // Similar a lo que haciamos con JSON.parse()
 
+server.use((request, response, next) => {
+  let { name, isAdmin } = request.body;
+
+  if (isAdmin === false) {
+    response.status(403).json({
+      succes: false,
+      message: `Acesso prohibido ${403}`,
+    });
+  }
+
+  console.log("Hola y mucho gusto: ", name);
+
+  next();
+});
 //Routers
 server.use("/koders", kodersRouter);
 // server.get("/koders", (request, response) => {

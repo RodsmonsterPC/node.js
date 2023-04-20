@@ -3,7 +3,13 @@ import { Koder } from "../models/koders.module.js";
 
 const router = express.Router();
 
-router.get("/", async (request, response) => {
+const middlewareGetKoders = (request, response, next) => {
+  console.log("GET /koders - Middleware a nivel de endpoint");
+
+  next();
+};
+
+router.get("/", middlewareGetKoders, async (request, response) => {
   try {
     const allKoders = await Koder.find({});
 
