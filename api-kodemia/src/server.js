@@ -10,6 +10,7 @@
 
 import express from "express";
 import koderRouter from "./routers/koder.router.js";
+import authKoder from "./routers/auth.router.js";
 
 const server = express(); // crear el server
 
@@ -17,4 +18,5 @@ const server = express(); // crear el server
 server.use(express.json());
 // Routers
 server.use("/koders", koderRouter);
+server.use("/auth", authKoder);
 export { server };

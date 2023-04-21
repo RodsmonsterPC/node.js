@@ -19,7 +19,6 @@ const koderSchema = new mongoose.Schema({
     type: Number,
     min: 1,
     max: 100,
-    required: true,
   },
   gender: {
     type: String,
@@ -29,6 +28,17 @@ const koderSchema = new mongoose.Schema({
   idGrauated: {
     type: Boolean,
     default: false,
+  },
+
+  email: {
+    type: String, //Regex
+    required: true,
+    match: /.*@.*\..*/,
+    trim: true,
+  },
+  password: {
+    type: String,
+    required: true,
   },
 });
 
