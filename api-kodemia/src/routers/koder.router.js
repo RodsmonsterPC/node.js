@@ -6,10 +6,13 @@ import {
   getKoderById,
   deleteKoderById,
 } from "../useCases/koder.usecase.js";
+import { isAdmin, isAuth } from "../middlewares/auth.middleware.js";
 
 const router = express.Router();
 
-router.get("/", async (request, response) => {
+// router.use(isAuth); de forma global
+
+router.get("/", isAuth, async (request, response) => {
   try {
     const { age, generation, gender, name, lastName, isGraduated } =
       request.query;
@@ -44,7 +47,7 @@ router.get("/", async (request, response) => {
   }
 });
 
-router.get("/:id", async (request, response) => {
+router.get("/:id", isAuth, async (request, response) => {
   try {
     const { id } = request.params.id;
 
@@ -83,7 +86,7 @@ router.post("/", async (request, response) => {
   }
 });
 
-router.patch("/:id", async (request, response) => {
+router.patch("/:id", isAuth, async (request, response) => {
   try {
     const id = request.params.id;
     const updateInfo = request.body;
@@ -104,7 +107,19 @@ router.patch("/:id", async (request, response) => {
   }
 });
 
-router.delete("/:id", async (request, response) => {
+/**
+ * Crea otro middleware para validar el role y verificar si es tipo admin
+ *
+ * si es admin, dejalo pasar
+ *
+ * si no, rechazalo por medio de un response.json()
+ *
+ * asignarla al endpoint de delete
+ *
+ *
+ */
+
+router.delete("/:id", isAuth, isAdmin, async (request, response) => {
   try {
     const id = request.params.id;
 
@@ -119,7 +134,7 @@ router.delete("/:id", async (request, response) => {
   } catch (error) {
     response.status(404).json({
       success: false,
-      message: "Error at patch koders",
+      message: "Error at delete koders",
     });
   }
 });

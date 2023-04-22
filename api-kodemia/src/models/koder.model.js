@@ -1,4 +1,4 @@
-import mongoose from "mongoose";
+import mongoose, { Schema } from "mongoose";
 
 const koderSchema = new mongoose.Schema({
   name: {
@@ -40,6 +40,26 @@ const koderSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  role: {
+    type: String,
+    enum: ["user", "admin"],
+    default: "user",
+  },
+  // generation: [
+  //   {
+  //     type: Schema.Types.ObjectId,
+  //     ref: "generation",
+  //   },
+  // ],
+  // comments: [
+  //   {
+  //     message: { type: String },
+  //     user: {
+  //       type: Schema.Types.ObjectId,
+  //       ref: "writers",
+  //     },
+  //   },
+  // ],
 });
 
 const Koder = mongoose.model("koders", koderSchema);

@@ -11,6 +11,7 @@
 import express from "express";
 import koderRouter from "./routers/koder.router.js";
 import authKoder from "./routers/auth.router.js";
+import mentorRouter from "./routers/mentor.route.js";
 
 const server = express(); // crear el server
 
@@ -19,4 +20,5 @@ server.use(express.json());
 // Routers
 server.use("/koders", koderRouter);
 server.use("/auth", authKoder);
+server.use("/mentors", mentorRouter);
 export { server };
